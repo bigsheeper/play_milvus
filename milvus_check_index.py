@@ -20,7 +20,7 @@ from common import *
 
 
 sift_dir_path = "/czsdata/sift1b/"
-sift_dir_path = "/test/milvus/raw_data/sift1b/"
+sift_dir_path = "/home/sheep/data-mnt/milvus/raw_data/sift10m/"
 deep_dir_path = "/czsdata/deep1b/"
 deep_dir_path = "/test/milvus/raw_data/deep1b/"
 
@@ -82,7 +82,7 @@ def create_index(collection, dataset, indextype, sync):
     global IndexDone, CurIndexType
     IndexDone = False
     modeStr = "synchronally" if sync else "asyncially"
-    print("sart building index %s"% modeStr)
+    print("start building index %s"% modeStr)
     loop_index_monitor(0.2)
     if dataset == DATASET_DEEP:
         if indextype == IndexTypeIVF_FLAT:

@@ -23,7 +23,7 @@ from common import *
 
 
 sift_dir_path = "/czsdata/sift1b/"
-sift_dir_path = "/test/milvus/raw_data/sift1b/"
+sift_dir_path = "/home/sheep/data-mnt/milvus/raw_data/sift10m/"
 deep_dir_path = "/czsdata/deep1b/"
 deep_dir_path = "/test/milvus/raw_data/deep1b/"
 

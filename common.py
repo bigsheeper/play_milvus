@@ -42,15 +42,17 @@ def prepare_collection(dataset):
 
 def create_sift_hnsw_index(collection, sync):
     _async = not sync
-    future = collection.create_index(field_name="vec",
-                            _async = _async,
-                            sync = sync,
-                            index_params={'index_type': IndexTypeHNSW,
+    index_params = {'index_type': IndexTypeHNSW,
                                           'metric_type': 'L2',
                                           'params': {
                                               "M": 12,  # int. 4~64
                                               "efConstruction": 150  # int. 8~512
-                                          }})
+                                          }}
+    print("index_params:", index_params)
+    future = collection.create_index(field_name="vec",
+                            _async = _async,
+                            sync = sync,
+                            index_params=index_params)
     future.done()
 
 

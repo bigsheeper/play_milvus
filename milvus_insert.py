@@ -22,11 +22,11 @@ from pymilvus import (
 from common import *
 
 ID_COUNTER = 0
-NUM_FILES = 5
-PARTITION_NUM = 5
+NUM_FILES = 100
+PARTITION_NUM = 10
 
 sift_dir_path = "/czsdata/sift1b/"
-sift_dir_path = "/test/milvus/raw_data/sift1b/"
+sift_dir_path = "/home/sheep/data-mnt/milvus/raw_data/sift10m/"
 deep_dir_path = "/czsdata/deep1b/"
 deep_dir_path = "/test/milvus/raw_data/deep1b/"
 
@@ -94,6 +94,10 @@ def close():
         globalInsertT.cancel()
     print("\nend")
 
+def get_partition_names(partition_num):
+    partition_names = ["p%d" % i for i in range(partition_num)]
+    partition_names[0] = DEFAULT_PARTITION_NAME
+    return partition_names
 
 def insert_dataset(collection, num, partition_num, gen_fnames_f):
     if not callable(gen_fnames_f):
@@ -103,8 +107,7 @@ def insert_dataset(collection, num, partition_num, gen_fnames_f):
     if num % partition_num != 0:
         raise_exception("num %% partition_num must be zero")
 
-    partition_names = ["p%d" % i for i in range(partition_num)]
-    partition_names[0] = DEFAULT_PARTITION_NAME
+    partition_names = get_partition_names(partition_num)
     cnt = num // partition_num
     PartitionTotal = cnt * PER_FILE_ROWS
     Total = PER_FILE_ROWS * num
@@ -241,7 +244,7 @@ if __name__ == '__main__':
     connect_server(host)
     try:
         collection = prepare_collection(dataset)
-        create_index(collection, dataset, indextype)
+        # create_index(collection, dataset, indextype)
         insert_collection(collection, dataset)
         confirm_collection_insert(collection)
     finally:
