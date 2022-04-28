@@ -9,6 +9,7 @@ import os
 
 import signal
 import sys
+import random
 
 from threading import Timer
 import numpy as np
@@ -132,6 +133,7 @@ def insert_afile_to_collection(collection, fname, partition_name):
     block_size = PER_FILE_ROWS
     entities = [
         [i for i in range(ID_COUNTER, ID_COUNTER + block_size)],
+        [float(random.randrange(0, 10000)) for _ in range(block_size)],
         data.tolist()
     ]
 
@@ -176,9 +178,10 @@ def prepare_collection(dataset):
         print("drop collection ", collection_name)
 
     field1 = FieldSchema(name="id", dtype=DataType.INT64, description="int64", is_primary=True)
-    field2 = FieldSchema(name="vec", dtype=DataType.FLOAT_VECTOR, description="float vector", dim=dim, is_primary=False)
-    schema = CollectionSchema(fields=[field1, field2], description="")
-    collection = Collection(name=collection_name, data=None, schema=schema, shards_num=2)
+    field2 = FieldSchema(name="rand", dtype=DataType.DOUBLE, description="double", is_primary=False)
+    field3 = FieldSchema(name="vec", dtype=DataType.FLOAT_VECTOR, description="float vector", dim=dim, is_primary=False)
+    schema = CollectionSchema(fields=[field1, field2, field3], description="")
+    collection = Collection(name=collection_name, data=None, schema=schema, shards_num=1)
     return collection
 
 
