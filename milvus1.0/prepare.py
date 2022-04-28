@@ -16,13 +16,13 @@ _PORT = '19530'  # default value
 # base params
 _COLLECTION_NAME = "sift"
 _PARTITION_NUM = 10
-_NB = 1000000
+_NB = 10000000
 _DIM = 128
 _INDEX_FILE_SIZE = 4096
 
 
 # dataset params
-sift_dir_path = "/data/milvus/raw_data/sift/"
+sift_dir_path = "/home/sheep/data-mnt/milvus/raw_data/sift10m/"
 ID_COUNTER = 0
 PER_FILE_ROWS = 100000
 
