@@ -23,8 +23,8 @@ from pymilvus import (
 from common import *
 
 ID_COUNTER = 0
-NUM_FILES = 100
-PARTITION_NUM = 10
+NUM_FILES = 10
+PARTITION_NUM = 1
 
 sift_dir_path = "/czsdata/sift1b/"
 sift_dir_path = "/home/sheep/data-mnt/milvus/raw_data/sift10m/"

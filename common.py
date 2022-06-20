@@ -78,7 +78,7 @@ def create_sift_ivfflat_index(collection, sync):
                             index_params={'index_type': IndexTypeIVF_FLAT,
                                           'metric_type': 'L2',
                                           'params': {
-                                              "nlist": 8192,
+                                              "nlist": 128,
                                           }})
     future.done()
 

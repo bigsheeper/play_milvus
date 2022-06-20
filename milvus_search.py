@@ -26,7 +26,7 @@ deep_dir_path = "/czsdata/deep1b/"
 deep_dir_path = "/test/milvus/raw_data/deep1b/"
 
 EF_SEARCHS = [50]
-NPROBES = [4, 6, 8, 12, 16, 20, 24, 32, 40, 50, 64, 128]
+NPROBES = [10]
 
 TOPK = 50
 QueryFName = "query.npy"

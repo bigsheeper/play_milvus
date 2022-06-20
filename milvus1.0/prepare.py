@@ -15,8 +15,8 @@ _PORT = '19530'  # default value
 
 # base params
 _COLLECTION_NAME = "sift"
-_PARTITION_NUM = 10
-_NB = 10000000
+_PARTITION_NUM = 1
+_NB = 1000000
 _DIM = 128
 _INDEX_FILE_SIZE = 4096
 
