@@ -22,6 +22,8 @@ def spinning_cursor():
         for cursor in '|/-\\':
             yield cursor
 
+COLLECTION_NAME = "play_milvus_2_0_0"
+
 IndexTypeHNSW = 'HNSW'
 IndexTypeIVF_FLAT = 'IVF_FLAT'
 
@@ -37,7 +39,7 @@ def prepare_collection(dataset):
     if dataset not in (DATASET_DEEP, DATASET_SIFT):
         raise_exception("wrong dataset")
 
-    collection = Collection(name=dataset)
+    collection = Collection(name=COLLECTION_NAME)
     return collection 
 
 def create_sift_hnsw_index(collection, sync):
@@ -78,7 +80,7 @@ def create_sift_ivfflat_index(collection, sync):
                             index_params={'index_type': IndexTypeIVF_FLAT,
                                           'metric_type': 'L2',
                                           'params': {
-                                              "nlist": 128,
+                                              "nlist": 2048,
                                           }})
     future.done()
 

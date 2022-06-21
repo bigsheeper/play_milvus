@@ -121,7 +121,7 @@ def load_collection(collection, dataset, partitions):
     if dataset not in (DATASET_DEEP, DATASET_SIFT):
         raise_exception("wrong dataset")
     loop_load_monitor(1)
-    collection = Collection(name=dataset)
+    collection = Collection(name=COLLECTION_NAME)
     collection.release()
     collection.load(partition_names=partitions)
     LoadDone = True
@@ -152,6 +152,7 @@ if __name__ == '__main__':
     partitions = args.p or None
 
     print("Host:", host)
+    print("Collection:", COLLECTION_NAME)
     print("Dataset:", dataset)
     if need_reload and partitions:
         print("Partitions:", partitions)

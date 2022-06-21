@@ -124,6 +124,7 @@ if __name__ == '__main__':
     dataset = args.dataset[0]
 
     print("Host:", host)
+    print("Collection:", COLLECTION_NAME)
     print("Dataset:", dataset)
     index = args.index
     if index:

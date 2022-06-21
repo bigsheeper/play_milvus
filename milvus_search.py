@@ -26,9 +26,9 @@ deep_dir_path = "/czsdata/deep1b/"
 deep_dir_path = "/test/milvus/raw_data/deep1b/"
 
 EF_SEARCHS = [50]
-NPROBES = [10]
+NPROBES = [8]
 
-TOPK = 50
+TOPK = 100
 QueryFName = "query.npy"
 
 Spinner = spinning_cursor()
@@ -127,6 +127,7 @@ if __name__ == '__main__':
         expr = ''
 
     print("Host:", host)
+    print("Collection:", COLLECTION_NAME)
     print("Dataset:", dataset)
     print("IndexType", indextype)
 

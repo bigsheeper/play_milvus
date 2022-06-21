@@ -23,7 +23,7 @@ from pymilvus import (
 from common import *
 
 ID_COUNTER = 0
-NUM_FILES = 10
+NUM_FILES = 100
 PARTITION_NUM = 1
 
 sift_dir_path = "/czsdata/sift1b/"
@@ -158,7 +158,7 @@ def connect_server(host):
     connections.connect(host=host, port=19530)
 
 def prepare_collection(dataset):
-    collection_name = dataset
+    collection_name = COLLECTION_NAME
     if dataset == DATASET_DEEP:
         dim = 96
     elif dataset == DATASET_SIFT:
@@ -241,6 +241,7 @@ if __name__ == '__main__':
     indextype = args.index[0]
 
     print("Host:", host)
+    print("Collection:", COLLECTION_NAME)
     print("Dataset:", dataset)
     print("IndexType", indextype)
 
