@@ -23,7 +23,7 @@ from pymilvus import (
 from common import *
 
 ID_COUNTER = 0
-NUM_FILES = 100
+NUM_FILES = 10
 PARTITION_NUM = 1
 
 sift_dir_path = "/czsdata/sift1b/"

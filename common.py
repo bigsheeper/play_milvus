@@ -22,7 +22,7 @@ def spinning_cursor():
         for cursor in '|/-\\':
             yield cursor
 
-COLLECTION_NAME = "play_milvus_2_0_0"
+COLLECTION_NAME = "vdc_581"
 
 IndexTypeHNSW = 'HNSW'
 IndexTypeIVF_FLAT = 'IVF_FLAT'
