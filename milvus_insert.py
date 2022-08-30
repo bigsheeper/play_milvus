@@ -23,8 +23,8 @@ from pymilvus import (
 from common import *
 
 ID_COUNTER = 0
-NUM_FILES = 100
-PARTITION_NUM = 10
+NUM_FILES = 10
+PARTITION_NUM = 1
 
 sift_dir_path = "/czsdata/sift1b/"
 sift_dir_path = "/home/sheep/data-mnt/milvus/raw_data/sift10m/"
@@ -171,17 +171,10 @@ def prepare_collection(dataset):
     collection_list = list_collections()
     print(list_collections())
 
-    if (collection_list.count(collection_name)):
-        print(collection_name, " exist, and drop it")
-        collection = Collection(collection_name)
-        collection.drop()
-        print("drop collection ", collection_name)
+    if not (collection_list.count(collection_name)):
+        raise_exception("collection dose not exist")
 
-    field1 = FieldSchema(name="id", dtype=DataType.INT64, description="int64", is_primary=True)
-    field2 = FieldSchema(name="rand", dtype=DataType.DOUBLE, description="double", is_primary=False)
-    field3 = FieldSchema(name="vec", dtype=DataType.FLOAT_VECTOR, description="float vector", dim=dim, is_primary=False)
-    schema = CollectionSchema(fields=[field1, field2, field3], description="")
-    collection = Collection(name=collection_name, data=None, schema=schema, shards_num=1)
+    collection = Collection(name=collection_name)
     return collection
 
 
